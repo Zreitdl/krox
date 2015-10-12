@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" android:layout_gravity="center_horizontal|top"
+                    android:id="@+id/linearLayout" android:layout_below="@+id/textViewTimeSet">
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30"
+                        android:id="@+id/radioButton30" android:layout_weight="1" android:textSize="30dp"
+                        android:enabled="false"/>
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="45"
+                        android:id="@+id/radioButton45" android:layout_weight="1" android:textSize="30dp"
+                        android:enabled="false" android:checked="false"/>
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radioButton60" android:layout_weight="1" android:text="60"
+                        android:textSize="30dp" android:enabled="false"/>
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Количество секунд:"
+                    android:id="@+id/textViewTimeSet" android:textSize="30dp" android:enabled="false"/>
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">krox</string>
+    <string name="app_name">Krox</string>
+    <string name="count">Счет</string>
+    <string name="info">Свайпни влево для запуска таймера</string>
+    <string name="timeIsUp">Время вышло</string>
+    <string name="timeSet">Время раунда (в секундах)</string>
+    <string name="play">Играть</string>
+    <string name="settings">Настройки</string>
 </resources>

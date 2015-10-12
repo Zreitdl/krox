@@ -7,11 +7,26 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="236dp"
-                android:layout_height="63dp"
-                android:text="Играть"
-                android:id="@+id/buttonStart" android:layout_gravity="center" android:textSize="30dp"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="236dp"
+                    android:layout_height="63dp"
+                    android:text="@string/play"
+                    android:id="@+id/buttonStart" android:layout_gravity="center" android:textSize="30sp"
+                    android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                    android:layout_marginTop="171dp"/>
+            <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="236dp"
+                    android:layout_height="63dp"
+                    android:text="@string/settings"
+                    android:id="@+id/buttonSettings"
+                    android:textSize="30sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/buttonStart" android:layout_alignLeft="@+id/buttonStart"/>
+        </RelativeLayout>
     </FrameLayout>
 </LinearLayout>
