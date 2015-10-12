@@ -10,34 +10,35 @@
         <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
-            <LinearLayout
-                    android:orientation="horizontal"
+            <RadioGroup
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" android:layout_gravity="center_horizontal|top"
-                    android:id="@+id/linearLayout" android:layout_below="@+id/textViewTimeSet">
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="horizontal" android:layout_below="@+id/textViewTimeSet"
+                    android:id="@+id/radioGroupTime">
                 <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30"
                         android:id="@+id/radioButton30" android:layout_weight="1" android:textSize="30dp"
-                        android:enabled="false"/>
+                        android:enabled="true" android:checked="false"/>
                 <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="45"
                         android:id="@+id/radioButton45" android:layout_weight="1" android:textSize="30dp"
-                        android:enabled="false" android:checked="false"/>
+                        android:enabled="true" android:checked="false" android:layout_gravity="center_horizontal"/>
                 <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/radioButton60" android:layout_weight="1" android:text="60"
-                        android:textSize="30dp" android:enabled="false"/>
-            </LinearLayout>
+                        android:textSize="30dp" android:enabled="true"/>
+            </RadioGroup>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Количество секунд:"
-                    android:id="@+id/textViewTimeSet" android:textSize="30dp" android:enabled="false"/>
+                    android:text="@string/timeSet"
+                    android:id="@+id/textViewTimeSet" android:textSize="30dp" android:enabled="true"/>
         </RelativeLayout>
     </FrameLayout>
 </LinearLayout>

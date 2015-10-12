@@ -24,15 +24,8 @@ public class StartActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start);
-        //settings
-        settings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if (settings.contains(APP_PREFERENCES_TIME)) {
-            time = settings.getInt(APP_PREFERENCES_TIME, 0);
-        } else {
-            Context context = this;
-            Resources res = context.getResources();
-            time = res.getInteger(R.integer.default_time);  // по умолчанию
-        }
+
+        Context context = this;
         //buttons
         Button buttonStart = (Button)(findViewById(R.id.buttonStart));
         Button buttonSettings = (Button)findViewById(R.id.buttonSettings);
@@ -41,6 +34,15 @@ public class StartActivity extends Activity {
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //settings
+                settings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+                if (settings.contains(APP_PREFERENCES_TIME)) {
+                    time = settings.getInt(APP_PREFERENCES_TIME, 0);
+                } else {
+
+                    Resources res = context.getResources();
+                    time = res.getInteger(R.integer.default_time);  // по умолчанию
+                }
                 Intent intent = new Intent(StartActivity.this, KroxActivity.class);
                 intent.putExtra("time", time);
                 startActivity(intent);

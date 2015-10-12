@@ -11,13 +11,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Счет: 0"
+                android:text="@string/count"
                 android:id="@+id/textViewScore" android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginBottom="30dp" android:textSize="30dp"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
+                android:text="@string/info"
+                android:gravity="center"
                 android:id="@+id/textViewInfo" android:layout_gravity="center" android:textSize="30dp"/>
     </FrameLayout>
 </LinearLayout>
