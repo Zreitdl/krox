@@ -20,6 +20,12 @@
                 android:text="@string/info"
                 android:gravity="center"
                 android:id="@+id/textViewInfo" android:layout_gravity="center" android:textSize="30dp"/>
+        <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pause"
+                android:id="@+id/buttonPause" android:layout_gravity="right|top"/>
     </FrameLayout>
 </LinearLayout>
 

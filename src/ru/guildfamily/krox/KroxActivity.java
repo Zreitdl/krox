@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.GestureDetector;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.view.MotionEvent;
 import android.widget.Toast;
+import ru.guildfamily.krox.myTimer.myTimer;
 
 public class KroxActivity extends Activity {
     private GestureDetector gestureDetector;
@@ -23,14 +25,28 @@ public class KroxActivity extends Activity {
     private TextView textViewInfo;
     private TextView textViewScore;
     private SharedPreferences mSettings;
-
+    private myTimer timer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        //timer
         GAME_TIME = getIntent().getExtras().getInt("time");
+        timer = new myTimer(GAME_TIME) {
+            @Override
+            public void finish() {
+                showScore();
+            }
+        };
 
+        Button buttonPause = (Button)findViewById(R.id.buttonPause);
+        buttonPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameOnPause();
+            }
+        });
         //загружаем textView
         textViewInfo = (TextView)findViewById(R.id.textViewInfo);
         textViewScore = (TextView)findViewById(R.id.textViewScore);
@@ -72,7 +88,7 @@ public class KroxActivity extends Activity {
                         if (onWorking) {
                             if (isFirstSwipe) {
                                 //SetOnTimer
-                                setOnTimer();
+                                timer.onStart();
                                 isFirstSwipe = false;
                                 textViewInfo.setText("Александр Сергеевич Пушкин");
                             } else {
@@ -91,20 +107,8 @@ public class KroxActivity extends Activity {
         });
     }
 
-    public void setOnTimer() {
-        new CountDownTimer(GAME_TIME, 1000) {
-            public void onTick(long millisUntilFinished) {
-                //nothing
-                //System.out.println("tick");
-            }
-            public void onFinish() {
-                showScore();
-                //textViewInfo.setText(getText(R.string.info));
-            }
-        }.start();
-    }
-
     public void showScore() {
+        //System.out.println("OOps");
         onWorking = false;
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(KroxActivity.this);
 
@@ -133,5 +137,42 @@ public class KroxActivity extends Activity {
 
     private void showToast(String phrase) {
         Toast.makeText(getApplicationContext(), phrase, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        //showToast("onDestroy");
+        timer.cancel();
+    }
+
+    public void onPause() {
+        gameOnPause();
+    }
+
+    public void gameOnPause() {
+        timer.onPause();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(KroxActivity.this);
+
+        // set title
+        alertDialogBuilder.setTitle(R.string.pause);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setMessage(R.string.clickOkToContinue)
+                .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        gameOnResume();
+                    }
+                });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
+    public void gameOnResume() {
+        timer.onStart();
     }
 }

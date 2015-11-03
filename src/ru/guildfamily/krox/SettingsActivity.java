@@ -66,11 +66,7 @@ public class SettingsActivity extends Activity {
         radioGroupTime.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // TODO Auto-generated method stub
                 switch (checkedId) {
-//                    case -1:
-//                        Toast.makeText(getApplicationContext(), "No choice", Toast.LENGTH_SHORT).show();
-//                        break;
                     case R.id.radioButton30:
                         TIME = 30000;
                         break;
